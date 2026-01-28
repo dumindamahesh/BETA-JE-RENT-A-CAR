@@ -1,235 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beta Je Rent A Car | Drive with Freedom</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --light-bg: #f8fafc;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --white: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--white); color: var(--text-main); line-height: 1.6; }
-
-        /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-        }
-        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        .logo span { color: var(--accent); }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 25px; }
-        nav ul li a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-        nav ul li a:hover { color: var(--accent); }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 5% 100px;
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.7)), 
-                        url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-        }
-        .hero h1 { font-size: 3rem; color: var(--primary); margin-bottom: 0.5rem; }
-        .hero .tagline { font-size: 1.5rem; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 2px; }
-        .hero p { max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem; color: var(--text-muted); }
-        .cta-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 12px 30px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
-        .btn-primary { background: var(--accent); color: white; }
-        .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
-        .btn-outline { border: 2px solid var(--accent); color: var(--accent); }
-        .btn-outline:hover { background: var(--accent); color: white; }
-
-        /* Why Choose Us Section */
-        .why-us { padding: 80px 5%; background: var(--light-bg); }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .why-card { background: white; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .why-card span { font-size: 2rem; display: block; margin-bottom: 15px; }
-
-        /* Fleet Section */
-        .fleet { padding: 80px 5%; }
-        .fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .car-card { border: 1px solid #edf2f7; border-radius: 15px; overflow: hidden; transition: 0.4s; }
-        .car-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .car-card img { width: 100%; height: 220px; object-fit: cover; }
-        .car-info { padding: 25px; text-align: center; }
-        .car-info h3 { margin-bottom: 8px; color: var(--primary); }
-        .car-info .desc { color: var(--accent); font-weight: 500; font-style: italic; font-size: 0.9rem; }
-
-        /* Pricing Table */
-        .pricing { padding: 80px 5%; background: var(--light-bg); }
-        .table-container { overflow-x: auto; max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        table th { background: var(--primary); color: white; padding: 20px; text-align: left; }
-        table td { padding: 20px; border-bottom: 1px solid #eee; }
-        .important-box { max-width: 1000px; margin: 30px auto 0; padding: 25px; background: #dbeafe; border-radius: 12px; border-left: 6px solid var(--accent); }
-
-        /* Contact Section */
-        .contact { padding: 80px 5%; text-align: center; }
-        .contact-content { max-width: 800px; margin: 0 auto; }
-        .hotline { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 20px 0; display: block; text-decoration: none; }
-        .hotline:hover { color: var(--accent); }
-        .social-link { display: inline-block; margin-top: 20px; color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); }
-
-        footer { background: var(--primary); color: #94a3b8; padding: 40px 5%; text-align: center; font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 2.2rem; }
-            .hotline { font-size: 1.8rem; }
-        }
-    </style>
+    <title>Beta Je Rent A Car | Premium Car Rental Service</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo">Beta Je <span>Rent A Car</span></div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Why Us</a></li>
-            <li><a href="#fleet">Our Fleet</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">Beta Je <span>Rent A Car</span></div>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">Why Us</a></li>
+                <li><a href="#fleet" class="nav-link">Our Fleet</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>BETA JE RENT A CAR</h1>
-        <div class="tagline">DRIVE WITH FREEDOM</div>
-        <p>Introducing a world of convenience, comfort, and choice. Providing reliable car rental services in Ragama since 2015. Whether it's a self-drive adventure or a professional airport pickup, we have the perfect wheels for you.</p>
-        <div class="cta-group">
-            <a href="tel:0765446333" class="btn btn-primary">Call Hotline: 076 544 6333</a>
-            <a href="https://www.facebook.com/betaje.rentacar" target="_blank" class="btn btn-outline">Visit Facebook Page</a>
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="container hero-content fade-up">
+            <span class="tagline">Drive With Freedom</span>
+            <h1>Your Journey, <br><span class="text-gradient">Elevated.</span></h1>
+            <p class="hero-text">Experience the difference with Beta Je. Whether it's a self-drive adventure or a
+                chauffeur-driven luxury tour, we provide the perfect wheels for your story.</p>
+            <div class="cta-group">
+                <a href="tel:0765446333" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Book Now: 076 544
+                    6333</a>
+                <a href="#fleet" class="btn btn-outline">Explore Fleet</a>
+            </div>
         </div>
     </section>
 
-    <section class="why-us" id="about">
-        <div class="section-header">
-            <h2>Why Choose Us?</h2>
-            <p>We focus on delivering a hassle-free travel experience.</p>
-        </div>
-        <div class="why-grid">
-            <div class="why-card"><span>🚗</span><h4>Wide Range of Vehicles</h4></div>
-            <div class="why-card"><span>📅</span><h4>Flexible Rental Periods</h4></div>
-            <div class="why-card"><span>✅</span><h4>Easy Booking Process</h4></div>
-            <div class="why-card"><span>⭐</span><h4>Top-Notch Customer Service</h4></div>
-        </div>
-    </section>
-
-    <section class="fleet" id="fleet">
-        <div class="section-header">
-            <h2>Our Fleet Highlights</h2>
-            <p>The perfect wheels to fuel your adventures.</p>
-        </div>
-        <div class="fleet-grid">
-            <div class="car-card">
-                <img src="https://s.car.info/image_files/1920/honda-vezel-front-side-0-512169.jpg" alt="Honda Vezel">
-                <div class="car-info">
-                    <h3>Honda Vezel</h3>
-                    <p class="desc">Elegance & Performance</p>
-                </div>
+    <!-- Why Choose Us -->
+    <section class="section section-bg" id="about">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Why Choose Beta Je?</h2>
+                <p>We don't just rent cars; we deliver seamless travel experiences.</p>
             </div>
-            <div class="car-card">
-                <img src="https://sbimotor.com/uploads/car/images/946288/4111339_big_4c373f1c.jpg" alt="Suzuki WagonR">
-                <div class="car-info">
-                    <h3>Suzuki WagonR</h3>
-                    <p class="desc">Spacious & Reliable</p>
+            <div class="features-grid">
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fa-solid fa-car-side"></i></div>
+                    <h3>Wide Range of Vehicles</h3>
+                    <p>From compact city cars to spacious family suvs, find the perfect match for your needs.</p>
                 </div>
-            </div>
-            <div class="car-card">
-                <img src="https://images.unsplash.com/photo-1521658913359-528246f40772?auto=format&fit=crop&w=500&q=60" alt="Suzuki Alto">
-                <div class="car-info">
-                    <h3>Suzuki Alto</h3>
-                    <p class="desc">Zippy & Economical</p>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                    <h3>Flexible Rentals</h3>
+                    <p>Daily, weekly, or monthly plans tailored to your specific schedule and budget.</p>
                 </div>
-            </div>
-            <div class="car-card">
-                <img src="https://images.unsplash.com/photo-1621359130023-09476057912a?auto=format&fit=crop&w=500&q=60" alt="Renault KWID">
-                <div class="car-info">
-                    <h3>Renault KWID</h3>
-                    <p class="desc">Nimble and Stylish</p>
-                </div>
-            </div>
-            <div class="car-card">
-                <img src="https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&w=500&q=60" alt="Maruti 800">
-                <div class="car-info">
-                    <h3>Maruti 800</h3>
-                    <p class="desc">Classic Charm & Efficiency</p>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fa-solid fa-check-double"></i></div>
+                    <h3>Hassle-Free Booking</h3>
+                    <p>Simple documentation and quick processing to get you on the road in no time.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing" id="pricing">
-        <div class="section-header">
-            <h2>Packages & Pricing</h2>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Option</th>
-                        <th>Rate per KM</th>
-                        <th>Allowance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Without Driver (Self-Drive)</strong></td>
-                        <td>Rs. 30 - 100</td>
-                        <td>100km/Day | 3000km/Month</td>
-                    </tr>
-                    <tr>
-                        <td><strong>With Driver (Airport/Tours)</strong></td>
-                        <td>Rs. 100 - 250</td>
-                        <td>Tailored to your trip</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="important-box">
-            <h4>Booking Information</h4>
-            <p>• Refundable Reservation Deposit: <strong>Rs. 10,000 - 20,000</strong></p>
-            <p>• Locations: Based in <strong>Ragama</strong>, providing island-wide service.</p>
+    <!-- Fleet Section -->
+    <section class="section" id="fleet">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Our Fleet Highlights</h2>
+                <p>Curated for comfort, performance, and reliability.</p>
+            </div>
+            <div class="fleet-grid">
+                <div class="car-card fade-up">
+                    <div class="car-image-wrapper">
+                        <img src="https://s.car.info/image_files/1920/honda-vezel-front-side-0-512169.jpg"
+                            alt="Honda Vezel">
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3>Honda Vezel</h3>
+                            <span class="car-tag">Premium</span>
+                        </div>
+                        <p class="car-desc">Elegance meets performance. Perfect for business or leisure.</p>
+                    </div>
+                </div>
+                <div class="car-card fade-up">
+                    <div class="car-image-wrapper">
+                        <img src="https://sbimotor.com/uploads/car/images/946288/4111339_big_4c373f1c.jpg"
+                            alt="Suzuki WagonR">
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3>Suzuki WagonR</h3>
+                            <span class="car-tag">Popular</span>
+                        </div>
+                        <p class="car-desc">Spacious interior with excellent fuel economy.</p>
+                    </div>
+                </div>
+                <div class="car-card fade-up">
+                    <div class="car-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1521658913359-528246f40772?auto=format&fit=crop&w=500&q=60"
+                            alt="Suzuki Alto">
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3>Suzuki Alto</h3>
+                            <span class="car-tag">Economy</span>
+                        </div>
+                        <p class="car-desc">The ultimate city zipper. Easy parking, great mileage.</p>
+                    </div>
+                </div>
+                <div class="car-card fade-up">
+                    <div class="car-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1621359130023-09476057912a?auto=format&fit=crop&w=500&q=60"
+                            alt="Renault KWID">
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3>Renault KWID</h3>
+                            <span class="car-tag">Stylish</span>
+                        </div>
+                        <p class="car-desc">Nimble handling with a bold SUV-inspired look.</p>
+                    </div>
+                </div>
+                <div class="car-card fade-up">
+                    <div class="car-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&w=500&q=60"
+                            alt="Maruti 800">
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header">
+                            <h3>Maruti 800</h3>
+                            <span class="car-tag">Budget</span>
+                        </div>
+                        <p class="car-desc">A classic choice for the budget-conscious traveler.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <h2>Book Now & Discover the Joy of Travel</h2>
-            <p>Reach out to us via our 24/7 hotline for reservations.</p>
-            <a href="tel:0765446333" class="hotline">076 544 6333</a>
-            <p>347/D, Atakorasa, Ragama, Sri Lanka</p>
-            <a href="https://www.facebook.com/betaje.rentacar" class="social-link" target="_blank">facebook.com/betaje.rentacar</a>
-            <br><br>
-            <a href="https://maps.google.com/?q=Atakorasa+Ragama" target="_blank" class="btn btn-outline" style="margin-top:20px;">View on Google Maps</a>
+    <!-- Pricing Section -->
+    <section class="section section-bg" id="pricing">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Transparent Pricing</h2>
+                <p>No hidden fees. Just honest rates.</p>
+            </div>
+
+            <div class="pricing-wrapper fade-up">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service Option</th>
+                                <th>Rate (LKR)</th>
+                                <th>Usage Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Self-Drive (Without Driver)</strong></td>
+                                <td>Rs. 30 - 100 <span style="font-size:0.8em; color:var(--text-muted)">/ km</span></td>
+                                <td>100km Daily Allowance | 3000km Monthly</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chauffeur Driven (Tours)</strong></td>
+                                <td>Rs. 100 - 250 <span style="font-size:0.8em; color:var(--text-muted)">/ km</span>
+                                </td>
+                                <td>Customized based on trip duration & distance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-alert fade-up">
+                <h4><i class="fa-solid fa-circle-info"></i> Booking Essentials</h4>
+                <p>• A refundable security deposit of <strong>Rs. 10,000 - 20,000</strong> is required.</p>
+                <p>• We are based in <strong>Ragama</strong> but provide service island-wide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="contact-highlight fade-up">
+            <div class="container">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Our hotline is open 24/7 for your reservations and inquiries.</p>
+                <a href="tel:0765446333" class="hotline-big">076 544 6333</a>
+                <p><i class="fa-solid fa-location-dot"></i> 347/D, Atakorasa, Ragama, Sri Lanka</p>
+
+                <div style="margin-top: 30px;">
+                    <a href="https://www.facebook.com/betaje.rentacar" target="_blank" class="btn btn-outline"
+                        style="border-color: white; color: white; margin-right: 10px;">
+                        <i class="fa-brands fa-facebook"></i> Facebook Page
+                    </a>
+                    <a href="https://maps.google.com/?q=Atakorasa+Ragama" target="_blank" class="btn btn-primary"
+                        style="background: white; color: var(--primary);">
+                        <i class="fa-solid fa-map-location-dot"></i> Get Directions
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Beta Je Rent A Car. All Rights Reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">#BetaJeRentACar #YourJourneyOurWheels #CarRentalExcellence</p>
+        <div class="container">
+            <a href="#" class="footer-logo">Beta Je <span>Rent A Car</span></a>
+            <p class="footer-copy">&copy; 2026 Beta Je Rent A Car. All Rights Reserved.</p>
+            <p class="footer-copy" style="margin-top: 10px;">#BetaJeRentACar #YourJourneyOurWheels</p>
+        </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
+
 </html>
